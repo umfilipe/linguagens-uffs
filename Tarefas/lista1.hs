@@ -63,3 +63,22 @@ salarioAtual salarioInicial anoEntrada anoAtual =
   aumentos salarioInicial anos
   where
     anos = fromIntegral (anoAtual - anoEntrada)
+
+-- ex7
+
+ultimo :: [Int] -> [Int]
+ultimo [] = []
+ultimo (cabeca : cauda) = if cauda /= [] then ultimo cauda else [cabeca]
+
+-- ex8
+
+primeiros :: [Int] -> [Int]
+primeiros [_] = []
+primeiros (cabeca : cauda) = cabeca : primeiros cauda
+
+-- ex9
+
+produtoLista :: [Int] -> [Int] -> [Int]
+produtoLista [] _ = []
+produtoLista _ [] = []
+produtoLista (cabeca1 : cauda1) (cabeca2 : cauda2) = (cabeca1 * cabeca2) : produtoLista cauda1 cauda2
