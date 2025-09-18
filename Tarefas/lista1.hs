@@ -82,3 +82,56 @@ produtoLista :: [Int] -> [Int] -> [Int]
 produtoLista [] _ = []
 produtoLista _ [] = []
 produtoLista (cabeca1 : cauda1) (cabeca2 : cauda2) = (cabeca1 * cabeca2) : produtoLista cauda1 cauda2
+
+-- ex10 e ex11
+
+data FormaComercializacao = Un | Peso
+  deriving (Show)
+
+data Produto
+  = Perecivel Int String Int Bool FormaComercializacao
+  | NaoPerecivel Int String String Int FormaComercializacao
+  deriving (Show)
+
+-- ex12
+
+validade :: Produto -> Int -> Bool
+validade (Perecivel _ _ anoValidade _ _) anoAtual = anoAtual <= anoValidade
+validade _ _ = True
+
+-- ex13
+
+and_ :: Bool -> Bool -> Bool
+and_ True True = True
+and_ _ _ = False
+
+or_ :: Bool -> Bool -> Bool
+or_ False False = False
+or_ _ _ = True
+
+-- ex14
+
+padroesLista :: [Int] -> Int
+padroesLista [] = 0
+padroesLista [x] = x
+padroesLista (x : y) = x + head y
+
+-- ex15
+
+contador :: [Int] -> Int
+contador l = foldl (\x y -> x + 1) 0 l
+
+-- extra
+
+contadorRecursivo :: [Int] -> Int
+contadorRecursivo [cab] = 1
+contadorRecursivo [] = 0
+contadorRecursivo (_ : cauda) = 1 + contadorRecursivo cauda
+
+-- ex16
+-- a: "def"
+-- b: 64
+-- c: erro de tipo
+-- d: [6,8]
+-- e: 9
+-- f: 60
